@@ -80,17 +80,6 @@ class CJNeuralNetwork:
         last_layer = len(self.weights)
 
         initial_error = np.subtract(self.layer_vals[last_layer], initial_targets)
-        #initial_error = np.subtract(self.layer_vals[last_layer], initial_targets)
-        #print(initial_error)
-
-        #for i in range(max(np.shape(initial_error))):
-        #    print(initial_error[i, 0])
-        #    initial_error[i, 0] = initial_error[i, 0] ** 2
-
-        #initial_error = np.square(np.array(initial_error))
-        #initial_error = np.multiply(initial_error, initial_error)
-
-        #print("targets = " + str(initial_error) + "\n")
 
         delta = np.multiply(initial_error, self.__linear_deriv(self.layer_zs[last_layer]))
         weight_change = np.matmul(delta, np.transpose(self.layer_vals[last_layer - 1]))
